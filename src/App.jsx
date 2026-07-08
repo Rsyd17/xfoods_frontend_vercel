@@ -20,7 +20,7 @@ function App() {
   const handleCariRekomendasi = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://kalisari-foods-backend-onrender.com', {
+      const response = await fetch('https://kalisari-foods-backend.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
