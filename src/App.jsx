@@ -12,7 +12,7 @@ function App() {
   const [prefMain, setPrefMain] = useState([]);
   const [prefBev, setPrefBev] = useState([]);
   const [prefSide, setPrefSide] = useState([]);
-  const [budget, setBudget] = useState(60000);
+  const [budget, setBudget] = useState(40000);
   
   const [rekomendasi, setRekomendasi] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,9 +33,12 @@ function App() {
       const result = await response.json();
       setRekomendasi(result.data);
       
-      setTimeout(() => {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      }, 300);
+  setTimeout(() => {
+    const sectionHasil = document.getElementById('hasil');
+    if (sectionHasil) {
+      sectionHasil.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 300);
     } catch (error) {
       console.error("Gagal memuat rekomendasi", error);
     }

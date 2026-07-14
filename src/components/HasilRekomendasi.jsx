@@ -16,10 +16,10 @@ function HasilRekomendasi({ data }) {
               Kombinasi Menu Tidak Ditemukan
             </h2>
             <p className="text-rose-700 leading-relaxed max-w-lg mx-auto">
-              Maaf, sistem tidak dapat merakit kombinasi 3 hidangan (Main Course, Beverage, dan Side Dish) yang 
+              Maaf, sistem tidak dapat merakit kombinasi 3 hidangan (Main Course, Beverage, dan Side Dish) yang
               total biayanya berada di bawah batasan anggaran yang Anda atur.
               <br /><br />
-              <span className="font-semibold text-rose-900">Saran:</span> Cobalah untuk menaikkan sedikit slider batasan 
+              <span className="font-semibold text-rose-900">Saran:</span> Cobalah untuk menaikkan sedikit slider batasan
               anggaran atau sesuaikan kembali kriteria rasa dan bahan.
             </p>
           </div>
@@ -36,13 +36,13 @@ function HasilRekomendasi({ data }) {
           <h2 className="text-3xl font-serif text-stone-900 mb-3">Hasil Analisis Sistem</h2>
           <p className="text-stone-500">Ditemukan kombinasi yang relevan dengan preferensi Anda saat ini</p>
         </div>
-        
+
         <div className="grid gap-8">
           {data.map((paket, index) => (
             <div key={index} className="bg-stone-50 border border-stone-200 p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
               {/* Garis Aksen Toska di Kiri */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-teal-600"></div>
-              
+
               {/* Header Paket */}
               <div className="flex flex-col md:flex-row justify-between md:items-center mb-8 border-b border-stone-200 pb-6">
                 <div>
@@ -60,7 +60,7 @@ function HasilRekomendasi({ data }) {
                   </span>
                 </div>
               </div>
-              
+
               {/* Grid 3 Kolom Item Hidangan */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {['Main Course', 'Beverage', 'Side Dish'].map((kategori) => {
@@ -69,7 +69,7 @@ function HasilRekomendasi({ data }) {
                   return (
                     <div key={kategori} className="bg-white border border-stone-200 p-5 rounded-xl flex flex-col h-full shadow-sm">
                       <p className="text-xs text-stone-500 font-medium mb-3">{kategori}:</p>
-                      
+
                       <div className="flex-grow mb-4">
                         <p className="text-base font-bold text-stone-800 leading-tight mb-1">
                           {item.nama_menu || 'Menu tidak tersedia'}
@@ -77,20 +77,34 @@ function HasilRekomendasi({ data }) {
                         <p className="text-sm text-teal-700 font-medium mb-3">
                           {item.nama_restoran || '-'}
                         </p>
-                        
+
                         <div className="space-y-2 pt-2 border-t border-stone-100">
                           <p className="text-xs text-stone-600 leading-relaxed flex items-start gap-1.5">
                             <span className="text-stone-400 mt-0.5">📍</span>
-                            <span>{item.Alamat || item.alamat || 'Alamat tidak tersedia'}</span>
+
+                            {/* PERBAIKAN: Membuat alamat menjadi link interaktif ke Google Maps */}
+                            {item.link_alamat ? (
+                              <a
+                                href={item.link_alamat}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-teal-700 hover:underline transition-colors"
+                                title="Buka rute di peta"
+                              >
+                                {item.Alamat || item.alamat || 'Alamat tidak tersedia'}
+                              </a>
+                            ) : (
+                              <span>{item.Alamat || item.alamat || 'Alamat tidak tersedia'}</span>
+                            )}
                           </p>
-                          
-                          {item.link_restoran && 
-                           String(item.link_restoran).toLowerCase() !== 'tidak tersedia' && 
-                           String(item.link_restoran).trim() !== '' ? (
-                            <a 
-                              href={item.link_restoran} 
-                              target="_blank" 
-                              rel="noopener noreferrer" 
+
+                          {item.link_restoran &&
+                            String(item.link_restoran).toLowerCase() !== 'tidak tersedia' &&
+                            String(item.link_restoran).trim() !== '' ? (
+                            <a
+                              href={item.link_restoran}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="text-xs font-medium text-teal-600 hover:text-teal-800 hover:underline flex items-center gap-1.5 transition-colors inline-block"
                             >
                               <span>🛵</span> Pesan via Aplikasi
