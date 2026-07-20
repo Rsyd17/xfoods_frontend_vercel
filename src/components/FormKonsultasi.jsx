@@ -9,9 +9,9 @@ function FormKonsultasi({
 }) {
   
   const opsiMainRasa = ["manis", "asin", "gurih", "pedas", "asam"];
-  const opsiMainKarbo = ["nasi", "mie", "bihun", "kwetiau","bubur", "roti"];
+  const opsiMainKarbo = ["nasi", "mie", "bihun", "kwetiau", "roti"];
   const opsiMainProtein = ["ayam", "sapi", "udang", "cumi", "ikan", "kerang", "kepiting", "bebek", "kambing", "telur", "tahu", "tempe", "bakso", "sosis", 
-    "pangsit", "sayur","jamur"];
+    "pangsit", "jeroan","sayur"];
   const opsiBevRasa = ["manis", "asam", "pahit", "gurih", "segar"];
   const opsiSideRasa = ["manis", "asin", "gurih", "pedas", "pahit"];
 
