@@ -20,7 +20,7 @@ function App() {
   const handleCariRekomendasi = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://kalisari-foods-taupe.vercel.app/api/rekomendasi', {
+      const response = await fetch('https://xfoods-backend-vercel.vercel.app/api/rekomendasi', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
