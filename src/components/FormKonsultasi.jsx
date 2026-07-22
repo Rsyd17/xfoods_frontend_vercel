@@ -113,7 +113,7 @@ function FormKonsultasi({
               </span>
             </div>
             <input 
-              type="range" min="40000" max="150000" step="5000" 
+              type="range" min="50000" max="150000" step="5000" 
               value={budget} 
               onChange={(e) => setBudget(e.target.value)} 
               className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
