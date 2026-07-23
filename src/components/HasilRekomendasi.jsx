@@ -11,7 +11,7 @@ function HasilRekomendasi({ data }) {
       <section className="w-full py-24 bg-stone-50 border-t border-stone-200" id="hasil">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <div className="bg-rose-50 border border-rose-200 p-10 md:p-14 rounded-3xl shadow-sm">
-            <div className="text-5xl mb-6">💸</div>
+            <div className="text-5xl mb-6">🍽️</div>
             <h2 className="text-2xl md:text-3xl font-serif text-rose-900 mb-4">
               Kombinasi Menu Tidak Ditemukan
             </h2>
@@ -34,7 +34,15 @@ function HasilRekomendasi({ data }) {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-serif text-stone-900 mb-3">Hasil Analisis Sistem</h2>
-          <p className="text-stone-500">Ditemukan kombinasi yang relevan dengan preferensi Anda saat ini</p>
+          <p className="text-stone-500 mb-5">Ditemukan kombinasi yang relevan dengan preferensi Anda saat ini</p>
+          
+          {/* PERBAIKAN 1: Penambahan Disclaimer Harga */}
+          <div className="inline-flex items-start md:items-center gap-2 bg-amber-50 text-amber-700 text-xs md:text-sm px-4 py-3 rounded-xl border border-amber-200 text-left md:text-center max-w-3xl mx-auto shadow-sm">
+            <span className="text-lg">💡</span>
+            <p>
+              <strong>Catatan:</strong> Kemungkinan terdapat perbedaan harga antara pemesanan <em>online</em> (melalui aplikasi) dengan pembelian langsung di tempat.
+            </p>
+          </div>
         </div>
 
         <div className="grid gap-8">
@@ -48,7 +56,7 @@ function HasilRekomendasi({ data }) {
                 <div>
                   <h3 className="text-2xl font-serif text-stone-800">Paket Rekomendasi {index + 1}</h3>
                   <p className="text-sm text-stone-500 mt-1">
-                    Akurasi Kecocokan: <span className="text-teal-700 font-bold bg-teal-100/50 px-2.5 py-0.5 rounded border border-teal-200 text-xs">
+                    Skor Kecocokan: <span className="text-teal-700 font-bold bg-teal-100/50 px-2.5 py-0.5 rounded border border-teal-200 text-xs">
                       {paket['Total Skor'] ? (paket['Total Skor'] / 3).toFixed(2) : '0.00'} / 1.00
                     </span>
                   </p>
@@ -78,11 +86,10 @@ function HasilRekomendasi({ data }) {
                           {item.nama_restoran || '-'}
                         </p>
 
-                        <div className="space-y-2 pt-2 border-t border-stone-100">
+                        <div className="space-y-3 pt-3 border-t border-stone-100">
                           <p className="text-xs text-stone-600 leading-relaxed flex items-start gap-1.5">
                             <span className="text-stone-400 mt-0.5">📍</span>
 
-                            {/* PERBAIKAN: Membuat alamat menjadi link interaktif ke Google Maps */}
                             {item.link_alamat ? (
                               <a
                                 href={item.link_alamat}
@@ -98,6 +105,7 @@ function HasilRekomendasi({ data }) {
                             )}
                           </p>
 
+                          {/* PERBAIKAN 2: Handling untuk restoran manual tanpa link aplikasi */}
                           {item.link_restoran &&
                             String(item.link_restoran).toLowerCase() !== 'tidak tersedia' &&
                             String(item.link_restoran).trim() !== '' ? (
@@ -110,8 +118,8 @@ function HasilRekomendasi({ data }) {
                               <span>🛵</span> Pesan via Aplikasi
                             </a>
                           ) : (
-                            <p className="text-xs text-stone-400 italic flex items-center gap-1.5">
-                              <span className="grayscale opacity-60">🛵</span> Layanan antar tidak tersedia
+                            <p className="text-[11px] font-medium text-stone-600 flex items-center gap-1.5 bg-stone-100 px-2.5 py-1.5 rounded-md w-fit border border-stone-200">
+                              <span>🏪</span> Pembelian Langsung (Di Tempat)
                             </p>
                           )}
                         </div>
