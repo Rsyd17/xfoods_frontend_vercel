@@ -12,7 +12,7 @@ function App() {
   const [prefMain, setPrefMain] = useState([]);
   const [prefBev, setPrefBev] = useState([]);
   const [prefSide, setPrefSide] = useState([]);
-  const [budget, setBudget] = useState(40000);
+  const [budget, setBudget] = useState(50000);
   
   const [rekomendasi, setRekomendasi] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
